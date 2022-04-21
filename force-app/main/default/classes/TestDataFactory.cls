@@ -10,7 +10,7 @@
         }
         return newAccoun;
     }
-    public static List<Opportunity> createOpportunities(List<Account> accList, Integer oppCount, Boolean doInsert){
+    public static List<Opportunity> createOpportunities(Account[] accList, Integer oppCount, Boolean doInsert){
         List<Opportunity> listOpp = new List<Opportunity>();
         for(Account acc : accList){
             for(Integer i=1; i<=oppCount; i++){
@@ -23,8 +23,8 @@
             }
         }
         if(doInsert){
-            insert opp;
+            insert listOpp;
         }
-        return opp;
+        return listOpp;
     }
 }
