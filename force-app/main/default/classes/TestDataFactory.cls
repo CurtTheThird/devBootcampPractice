@@ -10,14 +10,21 @@
         }
         return newAccoun;
     }
-    public static void createOpportunities(List<Account> accList, Integer oppCount, Boolean doInsert){
+    public static List<Opportunity> createOpportunities(List<Account> accList, Integer oppCount, Boolean doInsert){
         List<Opportunity> listOpp = new List<Opportunity>();
         for(Account acc : accList){
             for(Integer i=1; i<=oppCount; i++){
                 Opportunity opp = new Opportunity();
                 opp.name = acc.name + ' Opportunity #' + i;
-
+                opp.AccountId = acc.Id;
+                opp.StageName = 'Needs Analysis';
+                opp.CloseDate = Date.newInstance(2022, 5, 1 + i);
+                listOpp.add(opp);
             }
         }
+        if(doInsert){
+            insert opp;
+        }
+        return opp;
     }
 }
